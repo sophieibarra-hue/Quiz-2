@@ -1,14 +1,26 @@
-public class Menu {
-    public static void main (String[] args) {
-        Edificio edificio = new Edificio("Calle 100 #15-20, Bogota", 3);
-        edificio.agregarApartamento(101, 2);
-        edificio.agregarApartamento(102, 1);
-        edificio.agregarApartamento(103, 3);
+public class TareaProyecto {
+    private String descripcion;
+    private String estado; 
 
-        edificio.agregarApartamento(607, 6);
-
-        edificio.mostrarEdificio();
+    public TareaProyecto(String descripcion) {
+        this.descripcion = descripcion;
+        this.estado = "Pendiente";
     }
-    
-}
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    
+    public void mostrarInfo() {
+        System.out.println("  - Tarea: " + descripcion + " [" + estado + "]");
+    }
+}
