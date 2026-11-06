@@ -1,43 +1,34 @@
-import java.util.ArrayList;
+public class Proyecto {
+    private String nombre;
+    private String descripcion;
+    private TareaProyecto[] tareas;
+    private int contadorTareas;
 
-public class Edificio {
-    private String direccion;
-    private int capacidad;
-    private ArrayList<Apartamento> apartamentos;
-
-    public Edificio(String direccion, int capacidad) {
-        if (capacidad <= 0) {
-            throw new IllegalArgumentException("La capacidad debe ser mayor a cero.");
-        }
-        this.direccion = direccion;
-        this.capacidad = capacidad;
-        this.apartamentos = new ArrayList<>();
+	
+    public Proyecto(String nombre, String descripcion, int maxTareas) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.tareas = new TareaProyecto[maxTareas];
+        this.contadorTareas = 0;
     }
 
-    public void agregarApartamento(int numero, int habitaciones) {
-        if (apartamentos.size() >= capacidad) {
-            throw new IllegalStateException("Edificio lleno");
+    public boolean agregarTarea(String descripcionTarea) {
+        if (contadorTareas < tareas.length) {
+            tareas[contadorTareas] = new TareaProyecto(descripcionTarea);
+            contadorTareas++;
+            return true;
+        } else {
+            System.out.println("No se pueden añadir más tareas al proyecto (capacidad máxima alcanzada).");
+            return false;
         }
-        if (numero <=0 || habitaciones <= 0) {
-            throw new IllegalArgumentException("Información invalida");
-        }
-
-        for (Apartamento apt : apartamentos) {
-            if (apt.getNumero() == numero) {
-                System.out.println("El apartamento que ingreso ya existe");
-                return;
-            }
-        }
-        apartamentos.add(new Apartamento(numero, habitaciones));
-        System.out.println("Apartamento registrado con exito");
     }
 
-
-        public void mostrarEdificio () {
-        System.out.println("Edificio en: " + direccion);
-        System.out.println("Capacidad del apartamento: " + capacidad);
-        System.out.println("Apartamentos registrados : " + apartamentos.size());
-    
+    public void mostrarProyecto() {
+        System.out.println("Proyecto: " + nombre);
+        System.out.println("Descripción: " + descripcion);
+        System.out.println("Tareas asignadas (" + contadorTareas + "/" + tareas.length + "):");
+        for (int i = 0; i < contadorTareas; i++) {
+            tareas[i].mostrarInfo();
+        }
     }
-
 }
