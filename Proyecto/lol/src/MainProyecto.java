@@ -1,22 +1,16 @@
-public class Apartamento {
-    private int numero;
-    private int habitaciones;
+public class MainProyecto {
+    public static void main(String[] args) {
+        // Crear un proyecto con espacio para maximo 2 tareas
+        Proyecto miProyecto = new Proyecto("Sistema Academico", "Desarrollo del software escolar", 2);
 
-    public  Apartamento(int numero, int habitaciones) {
-        this.numero = numero;
-        this.habitaciones = habitaciones;
-    }
+        // Agregar tareas
+        miProyecto.agregarTarea("Diseñar la base de datos");
+        miProyecto.agregarTarea("Crear interfaz de usuario");
 
-    public int getNumero() {
-        return numero;
-    }
+        // Intentar agregar una tercera tarea (supera el limite)
+        miProyecto.agregarTarea("Realizar pruebas unitarias");
 
-    public int getHabitaciones() {
-        return habitaciones;
-    }
-
-    public void mostrarInformacion() {
-        System.out.println("Apartamento número: " + numero);
-        System.out.println("Número de habitaciones: " + habitaciones);
+        // Mostrar informacion completa
+        miProyecto.mostrarProyecto();
     }
 }
